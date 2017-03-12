@@ -24,7 +24,7 @@ public class Connect4{
     }
     return true;
   }
-  
+  public boolean isFInished(int p){}
   
   public void printArray{
     for(int k=0; k< board.length; k++){
