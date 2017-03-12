@@ -13,8 +13,12 @@ public class Connect4Test{
         System.out.println("That is an invalid column, or the column has already been filled. Please pick another");
         need = kb.nextInt();
       }
-      board.addChip(need, 1)
-      
+      if(board.addChip(need, 1)== false){
+        System.out.println("This is not a valid spot");
+      }
+      else if(board.addChip(need, 1)== true){
+        board.moveCPU();
+      }
     }
   }
 }
