@@ -26,60 +26,82 @@ public class Connect4{
   }
 //------------------------------------------------------------------------------------------------------------------------------//
   public boolean isFinished(int p, int x, int y){ //x and y are the positions for the chip last placed on the field, isFinished
-    //down, right, downRight only                 //checks after every move. x is row _ , y is column |
-    if(x < 3 && y < 3){ 
-      if(down(x,y,p) == true || right(x,y,p) == true || downRight(x,y,p) ==  true) return true;
-    }
-    //down, left, downLeft only  
+    //main end chain checks                       //checks after every move. x is row _ , y is column |
+    if(x < 3 && y < 3){                           
+      if(down(x,y,p) || right(x,y,p) || downRight(x,y,p)) return true;
+      if(x == 1 && y == 1){
+        if(UL1DR2(x,y,p)) return true;
+      }
+    } 
     if(x < 3 && y > 3){
-      if(down(x,y,p) == true || left(x,y,p) == true || downLeft(x,y,p) == true) return true;
+      if(down(x,y,p) || left(x,y,p) || downLeft(x,y,p)) return true;
+      if(x == 1 && y == 5){
+        if(DL2UR1(x,y,p)) return true;
+      }
     }
-    //left, upLeft only
     if(x > 2 && y > 3){
-      if(left(x,y,p) == true || upLeft(x,y,p) == true) return true;
+      if(left(x,y,p) || upLeft(x,y,p)) return true;
+      if(x == 4 && y == 5){
+        if(UL2DR1(x,y,p)) return true;
+      }
     }
-    //right, upRight only  
     if(x > 2 && y < 3){
-      if(right(x,y,p) == true || upRight(x,y,p) return true;
+      if(right(x,y,p) || upRight(x,y,p)) return true;
+      if(x == 4 && y == 1){
+        if(DL1UR2(x,y,p)) return true;
+      }
     }
-    //left, right, downLeft, downRight only
     if(x < 3 && y == 3){
-      if(left(x,y,p) == true || right(x,y,p) == true || downLeft(x,y,p) == true || downRight(x,y,p) == true) return true;
+      if(left(x,y,p) || right(x,y,p) || downLeft(x,y,p) || downRight(x,y,p)) return true;
     }
-    //left, right, upRight, upRight only
     if(x > 2 && y == 3){
-      if(left(x,y,p) == true || right(x,y,p) == true || upRight(x,y,p) == true || upLeft(x,y,p) == true) return true;
+      if(left(x,y,p) || right(x,y,p) || upRight(x,y,p) || upLeft(x,y,p)) return true;
     }
-    return false;                                            
+    //additional horizontal checks
+    if(y > 1 && y < 5){
+      if(L1R2(x,y,p) || L2R1(x,y,p)) return true;
+    }
+    if(y == 1){
+      if(L1R2(x,y,p)) return true;
+    }
+    if(y == 5){
+      if(L2R1(x,y,p)) return true;
+    }
+    //additional diagonal checks
+    for(int row = 2; row < 4; row++){
+      if(x == row && y > 1 && y < 5){
+        if(UL1DR2(x,y,p) || UL2DR1(x,y,p) || DL1UR2(x,y,p) || DL2UR1(x,y,p)) return true;
+      }
+    }
+    if(x == 1 && y > 1 && y < 5){
+      if(DL2UR1(x,y,p) || UL1DR2(x,y,p))return true;
+    }
+    if(x == 4 && y > 1 && y < 5){
+      if(UL2DR1(x,y,p) || DL1UR2(x,y,p))return true;
+    }
+    if(y == 1 && x > 1 && x < 4){
+      if(DL1UR2(x,y,p) || UL1DR2(x,y,p))return true;
+    }
+    if(y == 5 && x > 1 && x < 4){
+      if(DL2UR1(x,y,p) || UL2DR1(x,y,p))return true;
+    }
+    return false;                                          
   }
 //------------------------------------------------------------------------------------------------------------------------------//
-  public boolean down(int x,int y, int side){ //side is player or CPU. 1 = player, 2 = CPU
-    if(board[x+1][y] == side && board[x+2][y] == side && board[x+3][y] == side){return true;} return false; 
-  }
-//------------------------------------------------------------------------------------------------------------------------------//
-  public boolean upRight(int x,int y, int side){
-    if(board[x-1][y+1] == side && board[x-2][y+2] == side && board[x-3][y+3] == side){return true;} return false;
-  }
-//------------------------------------------------------------------------------------------------------------------------------//
-  public boolean upLeft(int x,int y, int side){
-    if(board[x-1][y-1] == side && board[x-2][y-2] == side && board[x-3][y-3] == side){return true;} return false;
-  }
-//------------------------------------------------------------------------------------------------------------------------------//
-  public boolean left(int x,int y, int side){
-    if(board[x][y-1] == side && board[x][y-2] == side && board[x][y-3] == side){return true;} return false;
-  }
-//------------------------------------------------------------------------------------------------------------------------------//
-  public boolean right(int x,int y, int side){
-    if(board[x][y+1] == side && board[x][y+2] == side && board[x][y+3] == side){return true;} return false;
-  }
-//------------------------------------------------------------------------------------------------------------------------------//
-  public boolean downRight(int x,int y, int side){
-    if(board[x+1][y+1] == side && board[x+2][y+2] == side && board[x+3][y+3] == side){return true;} return false; 
-  }
-//------------------------------------------------------------------------------------------------------------------------------//
-  public boolean downLeft(int x,int y, int side){
-    if(board[x+1][y-1] == side && board[x+2][y-2] == side && board[x+3][y-3] == side){return true;} return false;
-  }
+  //side is player or CPU. 1 = player, 2 = CPU
+  public boolean down(int x,int y, int side){return (board[x+1][y] == side && board[x+2][y] == side && board[x+3][y] == side);}
+  public boolean upRight(int x,int y, int side){return (board[x-1][y+1] == side && board[x-2][y+2] == side && board[x-3][y+3] == side);}
+  public boolean upLeft(int x,int y, int side){return (board[x-1][y-1] == side && board[x-2][y-2] == side && board[x-3][y-3] == side);}
+  public boolean left(int x,int y, int side){return (board[x][y-1] == side && board[x][y-2] == side && board[x][y-3] == side);}
+  public boolean right(int x,int y, int side){return (board[x][y+1] == side && board[x][y+2] == side && board[x][y+3] == side);}
+  public boolean downRight(int x,int y, int side){return (board[x+1][y+1] == side && board[x+2][y+2] == side && board[x+3][y+3] == side);}
+  public boolean downLeft(int x,int y, int side){return (board[x+1][y-1] == side && board[x+2][y-2] == side && board[x+3][y-3] == side);}
+  public boolean L1R2(int x,int y, int side){return (board[x][y-1] == side && board[x][y+1] == side && board[x][y+2] == side);}
+  public boolean L2R1(int x,int y, int side){return (board[x][y-1] == side && board[x][y-2] == side && board[x][y+1] == side);}
+  public boolean UL1DR2(int x,int y, int side){return (board[x-1][y-1] == side && board[x+1][y+1] == side && board[x+2][y+2] == side);}
+  public boolean UL2DR1(int x,int y, int side){return (board[x-1][y-1] == side && board[x-2][y-2] == side && board[x+1][y+1] == side);}
+  public boolean DL1UR2(int x,int y, int side){return (board[x-1][y+1] == side && board[x+1][y-1] == side && board[x-2][y+2] == side);}
+  public boolean DL2UR1(int x,int y, int side){return (board[x-1][y+1] == side && board[x+2][y-2] == side && board[x+1][y-1] == side);}
 //------------------------------------------------------------------------------------------------------------------------------//
   public void printArray{
     for(int k=0; k< board.length; k++){
