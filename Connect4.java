@@ -11,18 +11,13 @@ public class Connect4{
     }
     return 10;
   }
-  public boolean addchip(int c , int player){
+  public int addchip(int c , int player){
     r = findRow(c);
     if(r==10){
-      return false;
+      return -1;
     }
-    else if(player==1){
-      board[r][c] = 1;
-    }
-    else if(player==2){  //Computer
-      board[r][c] = 2;
-    }
-    return true;
+    board[r][c] = player;
+    return r;
   }
 //------------------------------------------------------------------------------------------------------------------------------//
   public boolean isFinished(int p, int x, int y){ //x and y are the positions for the chip last placed on the field, isFinished
