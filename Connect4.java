@@ -4,23 +4,23 @@ public class Connect4{
     board = new int[6][7];
   }
   public int findRow(int c){  // Finds the row of the chip for a certain column
-    for(int i=0; i<board.length;i++){
+    for(int i=board.length-1; i>=0;i--){
       if(board[i][c] == 0){
         return i;
       }
     }
     return 10;
   }
-  public int addchip(int c , int player){
+  public int addchip(int c , int player, int[][] arr){
     r = findRow(c);
     if(r==10){
       return -1;
     }
-    board[r][c] = player;
+    arr[r][c] = player;
     return r;
   }
 //------------------------------------------------------------------------------------------------------------------------------//
-  public boolean isFinished(int p, int x, int y){ //x and y are the positions for the chip last placed on the field, isFinished
+  public boolean isFinished(int p, int x, int y, int[][] arr){ //x and y are the positions for the chip last placed on the field, isFinished
     //main end chain checks                       //checks after every move. x is row _ , y is column |
     if(x < 3 && y < 3){                           
       if(down(x,y,p) || right(x,y,p) || downRight(x,y,p)) return true;
@@ -120,33 +120,42 @@ public class Connect4{
 FOR THE BOARD ARRAY. I DIDN'T DO ANYTHING THOUGH BECAUSE YOU MIGHT
  HAVE WANTED TO MAKE A DIFFERENT ISFINISHED METHOD.
   
-  public static AIMove(){
+  public void AIMove(int playerC){
+    int[][] cloneOffense = new int[6][7];
+    int[][] cloneDefense = new int[6][7];
     for(int i = 0; i < board[0].length; i++){
       if(findRow(i) != 10){
-        int cloneOffense[][] = board.clone(); //part for the robot winning the game by matching 4 
-        int r = addChipClone(i,2,cloneOffense);
+        for(int j=0;j<cloneOffense.length;j++){
+          for(int k=0; k<cloneOffense[0].length;k++){
+            cloneOffense[j][k] = board[j][k];
+          }
+        }
+        int r = addChip(i,2,cloneOffense);
         if(isFinished(2,r,i)){   
-          int unused = addChip(i,2);
+          int unused = addChip(i,2,board);
           return;
         }
-        int cloneDefense[][] = board.clone(); //part for robot preventing user from matching 4
-        int ro = addChipClone(i,1,cloneDefense);
-        if(isFinished(1,ro,i){
-          int unused2 = addChip(i,2);
-          return;
+        for(int j=0;j<cloneDefense.length;j++){
+          for(int k=0; k<cloneDefense[0].length;k++){
+            cloneDefense[j][k] = board[j][k];
+          }
         }
-        //insert something for putting the chip ontop of the last player's chip 
+        r = addChip(i,1,cloneDefense);
+        if(isFinished(1,r,i){
+          unused = addChip(i,2, board);
+          return;
+        } 
+      }
+    }
+    while(addChip(playerC, 2, board ) == -1){
+      if(playerC == 6){
+        playerC = 0;
+      }
+      else{
+        playerC++;
       }
     }
   }
-  
-  public int addchipClone(int c , int player, int[][] arr){
-    r = findRow(c);
-    if(r==10){
-      return -1;
-    }
-    arr[r][c] = player;
-    return r;
-  }
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/  
 }
