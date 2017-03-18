@@ -114,4 +114,39 @@ public class Connect4{
       }
     }
   }
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@//
+ FOR ISFINISHED, I REALIZE I WOULD NEED TO MAKE ANOTHER PARAMETER FOR
+ TO TAKE A CERTAIN ARRAY. BECAUSE RIGHT NOW IT IS ONLY
+FOR THE BOARD ARRAY. I DIDN'T DO ANYTHING THOUGH BECAUSE YOU MIGHT
+ HAVE WANTED TO MAKE A DIFFERENT ISFINISHED METHOD.
+  
+  public static AIMove(){
+    for(int i = 0; i < board[0].length; i++){
+      if(findRow(i) != 10){
+        int cloneOffense[][] = board.clone(); //part for the robot winning the game by matching 4 
+        int r = addChipClone(i,2,cloneOffense);
+        if(isFinished(2,r,i)){   
+          int unused = addChip(i,2);
+          break;
+        }
+        int cloneDefense[][] = board.clone(); //part for robot preventing user from matching 4
+        int ro = addChipClone(i,1,cloneDefense);
+        if(isFinished(1,ro,i){
+          int unused2 = addChip(i,2);
+          break;
+        }
+        //insert something for putting the chip ontop of the last player's chip 
+      }
+    }
+  }
+  
+  public int addchipClone(int c , int player, int[][] arr){
+    r = findRow(c);
+    if(r==10){
+      return -1;
+    }
+    arr[r][c] = player;
+    return r;
+  }
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/  
 }
