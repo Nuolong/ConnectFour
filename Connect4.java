@@ -100,10 +100,10 @@ public class Connect4{
   public boolean DL1UR2(int x,int y, int side, int[][] arr){return (arr[x-1][y+1] == side && arr[x+1][y-1] == side && arr[x-2][y+2] == side);}
   public boolean DL2UR1(int x,int y, int side, int[][] arr){return (arr[x-1][y+1] == side && arr[x+2][y-2] == side && arr[x+1][y-1] == side);}
 //------------------------------------------------------------------------------------------------------------------------------//
-  public void printArray{
+  public void printArray(){
     for(int k=0; k< board.length; k++){
       System.out.println("");
-      for(int j=0; j< board.length[1]; j++){
+      for(int j=0; j< board[0].length; j++){
         if(board[k][j]==1){
         System.out.print(" X ");
         }
@@ -126,10 +126,10 @@ public class Connect4{
             cloneOffense[j][k] = board[j][k];
           }
         }
-        int r = addChip(i,2,cloneOffense);
+        int r = addchip(i,2,cloneOffense);
         if(isFinished(2,r,i,cloneOffense)){   
-          AIRow = addChip(i,2,board);
-          AIColuumn = i;
+          AIRow = addchip(i,2,board);
+          AIColumn = i;
           return;
         }
         for(int j=0;j<cloneDefense.length;j++){
@@ -137,9 +137,9 @@ public class Connect4{
             cloneDefense[j][k] = board[j][k];
           }
         }
-        r = addChip(i,1,cloneDefense);
+        r = addchip(i,1,cloneDefense);
         if(isFinished(1,r,i,cloneDefense)){
-          AIRow = addChip(i,2, board);
+          AIRow = addchip(i,2, board);
           AIColumn = i;
           return;
         } 
@@ -156,7 +156,7 @@ public class Connect4{
     //    }
     //  }
     //}
-    int needr = addChip(playerC, 2, board );
+    int needr = addchip(playerC, 2, board );
     while(needr == -1){
       if(playerC == 6){
         playerC = 0;
@@ -164,7 +164,7 @@ public class Connect4{
       else{
         playerC++;
       }
-      needr=addChip(playerC, 2, board);
+      needr=addchip(playerC, 2, board);
     }
     AIRow = needr;
     AIColumn=playerC;
