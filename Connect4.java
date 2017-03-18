@@ -126,7 +126,7 @@ public class Connect4{
         }
         int r = addChip(i,2,cloneOffense);
         if(isFinished(2,r,i)){   
-          int unused = addChip(i,2,board);
+          int lastChipAIRow = addChip(i,2,board);
           return;
         }
         for(int j=0;j<cloneDefense.length;j++){
@@ -136,7 +136,7 @@ public class Connect4{
         }
         r = addChip(i,1,cloneDefense);
         if(isFinished(1,r,i){
-          unused = addChip(i,2, board);
+          lastChipAIRow = addChip(i,2, board);
           return;
         } 
       }
@@ -149,5 +149,11 @@ public class Connect4{
         playerC++;
       }
     }
-  }  
+  }
+  /*public static int getAIRow(){
+    return lastChipAIRow;
+  }
+  public static int getAIColumn(){
+    return i;
+  }*/
 }
