@@ -13,7 +13,7 @@ public class Connect4Test{
         System.out.println("That is an invalid column, or the column has already been filled. Please pick another");
         need = kb.nextInt();
       }
-      int lastChipRow = Connect.addChip(need, 1. Connect.board); //ADDED
+      int lastChipRow = Connect.addChip(need, 1, Connect.board); //ADDED
       if(lastChipRow == -1){
         System.out.println("This is not a valid spot");
       }
