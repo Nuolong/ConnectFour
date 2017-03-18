@@ -14,7 +14,7 @@ public class Connect4{
     return 10;
   }
   public int addchip(int c , int player, int[][] arr){
-    r = findRow(c);
+    int r = findRow(c);
     if(r==10){
       return -1;
     }
@@ -138,7 +138,7 @@ public class Connect4{
           }
         }
         r = addChip(i,1,cloneDefense);
-        if(isFinished(1,r,i,cloneDefense){
+        if(isFinished(1,r,i,cloneDefense)){
           AIRow = addChip(i,2, board);
           AIColumn = i;
           return;
