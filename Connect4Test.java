@@ -13,18 +13,18 @@ public class Connect4Test{
         System.out.println("That is an invalid column, or the column has already been filled. Please pick another");
         need = kb.nextInt();
       }
-      int lastChipRow = Connect.addChip(need, 1, Connect.board); //ADDED
+      int lastChipRow = Connect.addchip(need, 1, Connect.getBoard()); //ADDED
       if(lastChipRow == -1){
         System.out.println("This is not a valid spot");
       }
       else{
         Connect.AIMove(need);
       }
-      if(Connect.isFinished(1, lastChipRow, need, Connect.board) == true){ //if the player wins
+      if(Connect.isFinished(1, lastChipRow, need, Connect.getBoard()) == true){ //if the player wins
         System.out.println("Yay! You won!");
         break; 
       }
-      if(Connect.isFinished(2, Connect.getAIRow(), Connect.getAIColumn(), Connect.board) == true){  //if the CPU wins 
+      if(Connect.isFinished(2, Connect.getAIRow(), Connect.getAIColumn(), Connect.getBoard()) == true){  //if the CPU wins 
         System.out.println("Oh no, the computer won!");
         break;
       }
