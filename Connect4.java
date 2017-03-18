@@ -114,12 +114,6 @@ public class Connect4{
       }
     }
   }
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@//
- FOR ISFINISHED, I REALIZE I WOULD NEED TO MAKE ANOTHER PARAMETER FOR
- TO TAKE A CERTAIN ARRAY. BECAUSE RIGHT NOW IT IS ONLY
-FOR THE BOARD ARRAY. I DIDN'T DO ANYTHING THOUGH BECAUSE YOU MIGHT
- HAVE WANTED TO MAKE A DIFFERENT ISFINISHED METHOD.
-  
   public void AIMove(int playerC){
     int[][] cloneOffense = new int[6][7];
     int[][] cloneDefense = new int[6][7];
@@ -155,7 +149,5 @@ FOR THE BOARD ARRAY. I DIDN'T DO ANYTHING THOUGH BECAUSE YOU MIGHT
         playerC++;
       }
     }
-  }
-
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/  
+  }  
 }
