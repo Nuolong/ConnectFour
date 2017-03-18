@@ -22,11 +22,11 @@ public class Connect4Test{
         //int AIRow = Connect.getAIRow();
         //int AIColumn = Connect.getAIColumn();
       }
-      if(Connect.isFinished(1, lastChipRow, need) == true){ //if the player wins
+      if(Connect.isFinished(1, lastChipRow, need, Connect.board) == true){ //if the player wins
         System.out.println("Yay! You won!");
         break; 
       }
-      if(Connect.isFinished(2, Connect.getAIRow(), Connect.getAIColumn()) == true){  //if the CPU wins 
+      if(Connect.isFinished(2, Connect.getAIRow(), Connect.getAIColumn(), Connect.board) == true){  //if the CPU wins 
         System.out.println("Oh no, the computer won!");
         break;
       }
