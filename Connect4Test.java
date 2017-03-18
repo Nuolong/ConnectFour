@@ -18,9 +18,7 @@ public class Connect4Test{
         System.out.println("This is not a valid spot");
       }
       else{
-        Connect.AImove(need);
-        //int AIRow = Connect.getAIRow();
-        //int AIColumn = Connect.getAIColumn();
+        Connect.AIMove(need);
       }
       if(Connect.isFinished(1, lastChipRow, need, Connect.board) == true){ //if the player wins
         System.out.println("Yay! You won!");
