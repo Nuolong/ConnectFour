@@ -179,4 +179,7 @@ public class Connect4{
   public int getAIColumn(){
     return AIColumn;
   }
+  public int[][] getBoard(){
+    return board;
+  }
 }
