@@ -145,21 +145,21 @@ public class Connect4{
         } 
       }
     }
-    //for(int m = 0; m < board.length; m++){
-    //  for(int n = 2; n < board[0].length-2; n++){
-    //    if(board[m][n] == 1){
-    //      if(board[m][n+1] == 1 && board[m][n+2] == 0){
-    //        AIRow = addChip(n+2,2, board);
-    //        AIColumn = n;
-    //        return;
-    //      }else if(board[m][n-1] == 1 && board[m][n-2] == 0){
-    //        AIRow = addChip(n-2,2, board);
-    //        AIColumn = n;
-    //        return;
-    //      }
-    //    }
-    //  }
-    //}
+    for(int m = 0; m < board.length; m++){
+      for(int n = 2; n < board[0].length-2; n++){
+        if(board[m][n] == 1){
+          if(board[m][n+1] == 1 && board[m][n+2] == 0){
+            AIRow = addchip(n+2,2, board);
+            AIColumn = n;
+            return;
+          }else if(board[m][n-1] == 1 && board[m][n-2] == 0){
+            AIRow = addchip(n-2,2, board);
+            AIColumn = n;
+            return;
+          }
+        }
+      }
+    }
     int needr = addchip(playerC, 2, board );
     while(needr == -1){
       if(playerC == 6){
