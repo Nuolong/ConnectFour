@@ -19,12 +19,14 @@ public class Connect4Test{
       }
       else{
         Connect.AImove(need);
+        //int AIRow = Connect.getAIRow();
+        //int AIColumn = Connect.getAIColumn();
       }
       if(Connect.isFinished(1, lastChipRow, need) == true){ //if the player wins
         System.out.println("Yay! You won!");
         break; 
       }
-      if(Connect.isFinished(2) == true){  //if the CPU wins //NEED TO STILL IMPLEMENT THIS AFTER AI IS COMPLETE FOR ISFINISHED
+      if(Connect.isFinished(2/*, AIRow, AIColumn*/) == true){  //if the CPU wins //NEED TO STILL IMPLEMENT THIS AFTER AI IS COMPLETE FOR ISFINISHED
         System.out.println("Oh no, the computer won!");
         break;
       }
