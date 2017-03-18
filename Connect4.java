@@ -1,5 +1,7 @@
 public class Connect4{
   private int[][] board;
+  private int AIRow;
+  private int AIColumn;
   public Connect4(){
     board = new int[6][7];
   }
@@ -126,7 +128,8 @@ public class Connect4{
         }
         int r = addChip(i,2,cloneOffense);
         if(isFinished(2,r,i)){   
-          int lastChipAIRow = addChip(i,2,board);
+          AIRow = addChip(i,2,board);
+          AIColuumn = i;
           return;
         }
         for(int j=0;j<cloneDefense.length;j++){
@@ -136,24 +139,29 @@ public class Connect4{
         }
         r = addChip(i,1,cloneDefense);
         if(isFinished(1,r,i){
-          lastChipAIRow = addChip(i,2, board);
+          AIRow = addChip(i,2, board);
+          AIColumn = i;
           return;
         } 
       }
     }
-    while(addChip(playerC, 2, board ) == -1){
+    int needr = addChip(playerC, 2, board );
+    while(needr == -1){
       if(playerC == 6){
         playerC = 0;
       }
       else{
         playerC++;
       }
+      needr=addChip(playerC, 2, board);
     }
+    AIRow = needr;
+    AIColumn=playerC;
   }
-  /*public static int getAIRow(){
-    return lastChipAIRow;
+  public int getAIRow(){
+    return AIRow;
   }
-  public static int getAIColumn(){
-    return i;
+  public int getAIColumn(){
+    return AIColumn;
   }*/
 }
