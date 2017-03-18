@@ -127,13 +127,13 @@ FOR THE BOARD ARRAY. I DIDN'T DO ANYTHING THOUGH BECAUSE YOU MIGHT
         int r = addChipClone(i,2,cloneOffense);
         if(isFinished(2,r,i)){   
           int unused = addChip(i,2);
-          break;
+          return;
         }
         int cloneDefense[][] = board.clone(); //part for robot preventing user from matching 4
         int ro = addChipClone(i,1,cloneDefense);
         if(isFinished(1,ro,i){
           int unused2 = addChip(i,2);
-          break;
+          return;
         }
         //insert something for putting the chip ontop of the last player's chip 
       }
