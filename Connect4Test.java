@@ -26,7 +26,7 @@ public class Connect4Test{
         System.out.println("Yay! You won!");
         break; 
       }
-      if(Connect.isFinished(2/*, AIRow, AIColumn*/) == true){  //if the CPU wins //NEED TO STILL IMPLEMENT THIS AFTER AI IS COMPLETE FOR ISFINISHED
+      if(Connect.isFinished(2, Connect.AIRow, Connect.AIColumn) == true){  //if the CPU wins 
         System.out.println("Oh no, the computer won!");
         break;
       }
