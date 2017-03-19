@@ -34,7 +34,7 @@ public class Connect4Test{
         Connect.printArray();
         System.out.println("It's a draw!");
         break;
-      }0
+      }
         
     }
    kb.close();
