@@ -151,11 +151,11 @@ public class Connect4{
         if(board[m][n] == 1){
           if(board[m][n+1] == 1 && board[m][n+2] == 0){
             AIRow = addchip(n+2,2, board);
-            AIColumn = n;
+            AIColumn = n+2;
             return;
           }else if(board[m][n-1] == 1 && board[m][n-2] == 0){
             AIRow = addchip(n-2,2, board);
-            AIColumn = n;
+            AIColumn = n-2;
             return;
           }
         }
