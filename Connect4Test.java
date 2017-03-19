@@ -13,9 +13,11 @@ public class Connect4Test{
         System.out.println("That is an invalid column, or the column has already been filled. Please pick another");
         need = kb.nextInt();
       }
-      int lastChipRow = Connect.addchip(need, 1, Connect.getBoard()); //ADDED
-      if(lastChipRow == -1){
-        System.out.println("This is not a valid spot");
+      int lastChipRow = Connect.addchip(need, 1, Connect.getBoard()); 
+      while(lastChipRow == -1){
+        System.out.println("This is not a valid spot, pick another column");
+        int newc = kb.nextInt();
+        lastChipRow=Connect.addchip(newc,1,Connect.getBoard());
       }
       else{
         Connect.AIMove(need);
