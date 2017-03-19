@@ -30,6 +30,11 @@ public class Connect4Test{
         System.out.println("Oh no, the computer won!");
         break;
       }
+      if(Connect.isDraw()){
+        Connect.printArray();
+        System.out.println("It's a draw!");
+        break;
+      }
     }
    kb.close();
   }
