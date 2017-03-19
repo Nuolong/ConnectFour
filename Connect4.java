@@ -116,6 +116,7 @@ public class Connect4{
       }
     }
   }
+//------------------------------------------------------------------------------------------------------------------------------//  
   public void AIMove(int playerC){
     int[][] cloneOffense = new int[6][7];
     int[][] cloneDefense = new int[6][7];
@@ -173,6 +174,17 @@ public class Connect4{
     AIRow = needr;
     AIColumn=playerC;
   }
+//------------------------------------------------------------------------------------------------------------------------------//
+  public boolean isDraw(){
+    for(int i = 0; i < board.length; i++){
+      for(int j = 0; j < board[0].length; j++){
+        if(board[i][j] == 0)
+          return false;
+      }
+    }
+    return true;
+  }
+//------------------------------------------------------------------------------------------------------------------------------//
   public int getAIRow(){
     return AIRow;
   }
