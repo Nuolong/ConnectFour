@@ -21,13 +21,16 @@ public class Connect4Test{
         Connect.AIMove(need);
       }
       if(Connect.isFinished(1, lastChipRow, need, Connect.getBoard()) == true){ //if the player wins
+        Connect.printArray();
         System.out.println("Yay! You won!");
         break; 
       }
       if(Connect.isFinished(2, Connect.getAIRow(), Connect.getAIColumn(), Connect.getBoard()) == true){  //if the CPU wins 
+        Connect.printArray();
         System.out.println("Oh no, the computer won!");
         break;
       }
     }
+   kb.close();
   }
 }
