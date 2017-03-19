@@ -34,3 +34,4 @@ public class Connect4Test{
    kb.close();
   }
 }
+  
