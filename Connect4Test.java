@@ -19,9 +19,7 @@ public class Connect4Test{
         int newc = kb.nextInt();
         lastChipRow=Connect.addchip(newc,1,Connect.getBoard());
       }
-      else{
-        Connect.AIMove(need);
-      }
+      Connect.AIMove(need);
       if(Connect.isFinished(1, lastChipRow, need, Connect.getBoard()) == true){ //if the player wins
         Connect.printArray();
         System.out.println("Yay! You won!");
